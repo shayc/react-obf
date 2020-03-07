@@ -4,9 +4,9 @@ Board examples:
 
 ```jsx
 import { Board, Tile, Pictogram, useBoard } from "@shayc/react-obf";
-import ck12 from "../../obf/ck12.json";
+import boardSet from "../../obf/lots-of-stuff.json";
 
-const { board, loadBoard } = useBoard(ck12);
+const { board, loadBoard } = useBoard(boardSet);
 
 function renderButton(button) {
   const variant = button.load_board ? "folder" : "button";

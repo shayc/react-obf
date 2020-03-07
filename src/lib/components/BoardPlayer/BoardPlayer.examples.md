@@ -4,8 +4,7 @@ BoardPlayer examples:
 
 ```jsx
 import { BoardPlayer, useBoard } from "@shayc/react-obf";
-
-import obfExample from "../../obf/lots-of-stuff.json";
+import boardSet from "../../obf/lots-of-stuff.json";
 
 function play(sound) {
   const audio = new Audio(sound);
@@ -27,7 +26,7 @@ const {
   openFiles,
   nav,
   output
-} = useBoard(obfExample, deps);
+} = useBoard(boardSet, deps);
 
 <div
   style={{
