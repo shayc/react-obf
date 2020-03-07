@@ -1,0 +1,31 @@
+.root {
+  height: 3rem;
+  min-width: 3rem;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s linear background-color;
+}
+
+.root:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.root:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.root:hover:disabled {
+  background: unset;
+}
+
+.root:active {
+  background: rgba(0, 0, 0, 0.2);
+  transition: none;
+}

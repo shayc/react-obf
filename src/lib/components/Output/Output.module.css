@@ -1,0 +1,31 @@
+.root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.container {
+  flex: 1;
+}
+
+.container:not([tabindex="-1"]) {
+  cursor: pointer;
+}
+
+.container:not([tabindex="-1"]):focus {
+  outline: 2px solid;
+  outline-offset: -4px;
+}
+
+.value {
+  box-sizing: border-box;
+  height: 100%;
+  min-width: 7em;
+  padding: 0.5em 1rem;
+}
+
+.flipHorizontal {
+  transform: scaleX(-1);
+}
