@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import * as OBF from "@shayc/obf-utils";
 
-import { sortGrid } from "./utils";
 import Row from "./Row/Row";
 import Cell from "./Cell/Cell";
 import styles from "./BaseGrid.module.css";
@@ -19,7 +19,7 @@ function BaseGrid(props) {
   } = props;
   const gridClassName = clsx(styles.root, className);
 
-  const grid = sortGrid({ columns, rows, order, items });
+  const grid = OBF.sortGrid({ columns, rows, order, items });
 
   let itemIndex = 0;
 
