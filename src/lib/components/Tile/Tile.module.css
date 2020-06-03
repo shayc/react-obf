@@ -4,7 +4,6 @@
   position: relative;
   padding: 0;
   border: 4px solid transparent;
-  border-radius: 0;
   font: inherit;
   color: #000;
   overflow: hidden;
@@ -12,17 +11,8 @@
 }
 
 .root:focus {
-  outline: 4px solid rgba(255, 0, 0, 0.7);
-}
-
-.root:hover::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.7);
+  outline-offset: -4px;
+  outline: 4px solid rgba(0, 0, 0, 0.5);
 }
 
 .isFolder::after {

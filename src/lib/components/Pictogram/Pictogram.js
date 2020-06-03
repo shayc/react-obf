@@ -8,7 +8,7 @@ function Pictogram(props) {
   const { className, label, labelPosition, src } = props;
 
   const pictogramClassName = clsx(styles.root, className, {
-    [styles.rootDirectionReverse]: labelPosition === "top"
+    [styles.isColumnReverse]: labelPosition === "top"
   });
 
   return (
