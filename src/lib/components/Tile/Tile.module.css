@@ -12,10 +12,20 @@
 }
 
 .root:focus {
-  outline: 4px solid rgba(255, 0, 0, .7);
+  outline: 4px solid rgba(255, 0, 0, 0.7);
 }
 
-.rootFolder::before {
+.root:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.isFolder::after {
   content: "";
   position: absolute;
   top: 0;

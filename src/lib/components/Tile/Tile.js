@@ -24,7 +24,7 @@ function Tile(props) {
   const isFolder = variant === "folder";
 
   const tileClassName = clsx(styles.root, className, {
-    [styles.rootFolder]: isFolder
+    [styles.isFolder]: isFolder
   });
 
   const tileStyle = {
