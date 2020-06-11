@@ -33,7 +33,7 @@
     "deploy": "gh-pages -d styleguide"
   },
   "dependencies": {
-    "@shayc/obf-utils": "0.0.12",
+    "@shayc/obf-utils": "0.0.13",
     "base64-arraybuffer": "^0.2.0",
     "clsx": "^1.1.1",
     "jszip": "^3.4.0"
