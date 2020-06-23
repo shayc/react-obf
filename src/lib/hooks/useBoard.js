@@ -34,10 +34,10 @@ function useBoard(boardSet = initialBoardSet, deps = initialDeps) {
     return {
       id,
       name,
-      buttonsCount: buttons.length,
+      buttonCount: buttons.length,
     };
   });
-
+console.log('boardList', boardList)
   const rootBoardId = getRootBoard()?.id;
   const nav = useNavigation([rootBoardId], 0);
   const board = nav.currentHistory ? getBoardById(nav.currentHistory) : {};

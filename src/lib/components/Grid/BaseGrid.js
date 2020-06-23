@@ -13,6 +13,7 @@ function BaseGrid(props) {
     columns,
     items,
     order,
+    renderEmptyCell,
     renderItem,
     rows,
     ...other
@@ -30,7 +31,7 @@ function BaseGrid(props) {
           {row.map((item, cellIndex) => {
             return (
               <Cell key={cellIndex}>
-                {item && renderItem(item, itemIndex++)}
+                {item ? renderItem(item, itemIndex++) : renderEmptyCell()}
               </Cell>
             );
           })}
@@ -53,7 +54,7 @@ BaseGrid.propTypes = {
       /**
        * Item ID.
        */
-      id: PropTypes.string.isRequired
+      id: PropTypes.string.isRequired,
     })
   ),
   /**
@@ -67,12 +68,12 @@ BaseGrid.propTypes = {
   /**
    * Number of rows.
    */
-  rows: PropTypes.number.isRequired
+  rows: PropTypes.number.isRequired,
 };
 
 BaseGrid.defaultProps = {
   items: [],
-  order: []
+  order: [],
 };
 
 export default BaseGrid;

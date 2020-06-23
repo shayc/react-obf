@@ -54,7 +54,7 @@ Grid.propTypes = {
       /**
        * Item ID.
        */
-      id: PropTypes.string.isRequired
+      id: PropTypes.string.isRequired,
     })
   ),
   /**
@@ -62,14 +62,17 @@ Grid.propTypes = {
    */
   order: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   /**
+   * Item empty cell.
+   */
+  renderEmptyCell: PropTypes.func.isRequired,
+  /**
    * Item renderer.
-   *
    */
   renderItem: PropTypes.func.isRequired,
   /**
    * Number of rows.
    */
-  rows: PropTypes.number.isRequired
+  rows: PropTypes.number.isRequired,
 };
 
 export default Grid;

@@ -8,7 +8,7 @@ import AbsolutePosition from "../AbsolutePosition";
 import styles from "./Board.module.css";
 
 function Board(props) {
-  const { buttons, className, grid, renderButton } = props;
+  const { buttons, className, grid, renderButton, renderEmptyCell } = props;
 
   const boardClassName = clsx(styles.root, className);
 
@@ -27,6 +27,7 @@ function Board(props) {
           items={buttons}
           order={grid.order}
           renderItem={renderButton}
+          renderEmptyCell={renderEmptyCell}
           rows={grid.rows}
         />
       )}
@@ -47,7 +48,7 @@ Board.propTypes = {
       /**
        * Button ID.
        */
-      id: PropTypes.string.isRequired
+      id: PropTypes.string.isRequired,
     })
   ),
   /**
@@ -65,16 +66,20 @@ Board.propTypes = {
     /**
      * Number of rows.
      */
-    rows: PropTypes.number.isRequired
+    rows: PropTypes.number.isRequired,
   }).isRequired,
   /**
    * Button renderer.
    */
-  renderButton: PropTypes.func.isRequired
+  renderButton: PropTypes.func.isRequired,
+  /**
+   * Empty cell renderer.
+   */
+  renderEmptyCell: PropTypes.func.isRequired,
 };
 
 Board.defaultProps = {
-  buttons: []
+  buttons: [],
 };
 
 export default Board;
