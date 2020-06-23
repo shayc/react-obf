@@ -19,6 +19,12 @@ function useBoardSet(boardSet = initialBoardSet) {
     return board;
   }
 
+  function getBoards() {
+    const boards = OBF.getBoards(ref.current);
+
+    return boards;
+  }
+
   function getRootBoard() {
     const board = OBF.getRootBoard(ref.current);
 
@@ -44,8 +50,9 @@ function useBoardSet(boardSet = initialBoardSet) {
     clearBoardSet,
     getBoardById,
     getBoardByPath,
+    getBoards,
     getRootBoard,
-    setBoardSet
+    setBoardSet,
   };
 }
 

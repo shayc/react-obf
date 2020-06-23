@@ -15,7 +15,7 @@ const initialDeps = {
     throw new Error(
       "speak() is not implemented: please provide a text-to-speech function to useBoard hook."
     );
-  }
+  },
 };
 
 function useBoard(boardSet = initialBoardSet, deps = initialDeps) {
@@ -23,16 +23,26 @@ function useBoard(boardSet = initialBoardSet, deps = initialDeps) {
     clearBoardSet,
     getBoardById,
     getBoardByPath,
+    getBoards,
     getRootBoard,
-    setBoardSet
+    setBoardSet,
   } = useBoardSet(boardSet);
+
+  const boards = getBoards();
+
+  const boardList = boards.map(({ id, name, buttons }) => {
+    return {
+      id,
+      name,
+      buttonsCount: buttons.length,
+    };
+  });
 
   const rootBoardId = getRootBoard()?.id;
   const nav = useNavigation([rootBoardId], 0);
   const board = nav.currentHistory ? getBoardById(nav.currentHistory) : {};
   const grid = useGrid(board?.grid || {});
   const output = useOutput();
-
   async function openFiles(files) {
     clearSet();
 
@@ -64,7 +74,7 @@ function useBoard(boardSet = initialBoardSet, deps = initialDeps) {
 
   function doButtonActions(button) {
     if (button.actions?.length) {
-      button.actions.forEach(action => handleAction(action));
+      button.actions.forEach((action) => handleAction(action));
     } else if (button.action) {
       handleAction(button.action);
     }
@@ -78,7 +88,7 @@ function useBoard(boardSet = initialBoardSet, deps = initialDeps) {
       [SpecialtyActions.Clear]: output.clear,
       [SpecialtyActions.Home]: loadRootBoard,
       [SpecialtyActions.Space]: outputPushSpace,
-      [SpecialtyActions.Speak]: speakOutput
+      [SpecialtyActions.Speak]: speakOutput,
     };
 
     const actionHandler = ActionHandlers[action];
@@ -95,10 +105,10 @@ function useBoard(boardSet = initialBoardSet, deps = initialDeps) {
   }
 
   function spellOutput(string) {
-    output.joinLastValue(value => {
+    output.joinLastValue((value) => {
       return {
         ...value,
-        label: `${value?.label || ""}${string}`
+        label: `${value?.label || ""}${string}`,
       };
     });
   }
@@ -155,6 +165,7 @@ function useBoard(boardSet = initialBoardSet, deps = initialDeps) {
 
   return {
     board,
+    boardList,
     grid,
     handleButtonClick,
     handleOutputClick,
@@ -162,7 +173,8 @@ function useBoard(boardSet = initialBoardSet, deps = initialDeps) {
     loadBoard,
     loadRootBoard,
     nav,
-    output
+    output,
+    rootBoardId,
   };
 }
 
