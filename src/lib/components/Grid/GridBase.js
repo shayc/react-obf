@@ -5,9 +5,9 @@ import * as OBF from "@shayc/obf-utils";
 
 import Row from "./Row/Row";
 import Cell from "./Cell/Cell";
-import styles from "./BaseGrid.module.css";
+import styles from "./GridBase.module.css";
 
-function BaseGrid(props) {
+function GridBase(props) {
   const {
     className,
     columns,
@@ -43,7 +43,7 @@ function BaseGrid(props) {
   );
 }
 
-BaseGrid.propTypes = {
+GridBase.propTypes = {
   /**
    * Number of columns.
    */
@@ -73,9 +73,9 @@ BaseGrid.propTypes = {
   rows: PropTypes.number.isRequired,
 };
 
-BaseGrid.defaultProps = {
+GridBase.defaultProps = {
   items: [],
   order: [],
 };
 
-export default BaseGrid;
+export default GridBase;

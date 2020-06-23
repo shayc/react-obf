@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 
-import BaseGrid from "./BaseGrid";
+import GridBase from "./GridBase";
 import styles from "./Grid.module.css";
 
 function chunks(array, size) {
@@ -27,7 +27,7 @@ function Grid(props) {
     <div className={styles.root}>
       {Boolean(pages.length > 1) ? (
         pages.map((pageItems, i) => (
-          <BaseGrid
+          <GridBase
             {...props}
             className={gridClassName}
             items={pageItems}
@@ -35,7 +35,7 @@ function Grid(props) {
           />
         ))
       ) : (
-        <BaseGrid {...props} />
+        <GridBase {...props} />
       )}
     </div>
   );

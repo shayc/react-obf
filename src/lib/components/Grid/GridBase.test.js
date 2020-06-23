@@ -1,9 +1,9 @@
 import React from "react";
 import { render } from "@testing-library/react";
 
-import BaseGrid from "./BaseGrid";
+import GridBase from "./GridBase";
 
-describe("<BaseGrid />", () => {
+describe("<GridBase />", () => {
   test("smoke", () => {
     const renderItem = () => {};
     const items = [];
@@ -11,7 +11,7 @@ describe("<BaseGrid />", () => {
     const rows = 3;
 
     const { container } = render(
-      <BaseGrid
+      <GridBase
         items={items}
         renderItem={renderItem}
         columns={columns}
@@ -30,7 +30,7 @@ describe("<BaseGrid />", () => {
     const rows = 3;
 
     const { queryByText } = render(
-      <BaseGrid
+      <GridBase
         items={items}
         renderItem={renderItem}
         columns={columns}
