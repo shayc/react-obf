@@ -18,6 +18,7 @@ function GridBase(props) {
     rows,
     ...other
   } = props;
+
   const gridClassName = clsx(styles.root, className);
 
   const grid = OBF.sortGrid({ columns, rows, order, items });
