@@ -31,7 +31,9 @@ function BaseGrid(props) {
           {row.map((item, cellIndex) => {
             return (
               <Cell key={cellIndex}>
-                {item ? renderItem(item, itemIndex++) : renderEmptyCell()}
+                {item
+                  ? renderItem(item, itemIndex++)
+                  : renderEmptyCell && renderEmptyCell()}
               </Cell>
             );
           })}

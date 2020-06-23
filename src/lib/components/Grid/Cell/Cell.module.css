@@ -3,5 +3,8 @@
   flex: 1 auto;
   width: 0;
   margin: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: rgba(128, 128, 128, 0.1);
 }
