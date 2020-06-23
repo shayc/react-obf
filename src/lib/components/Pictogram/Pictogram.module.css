@@ -31,7 +31,6 @@
 .label {
   width: 100%;
   flex-shrink: 0;
-  line-height: 1;
   font-weight: 700;
   margin: 4px;
   white-space: nowrap;
