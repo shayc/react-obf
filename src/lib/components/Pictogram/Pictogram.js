@@ -5,14 +5,14 @@ import clsx from "clsx";
 import styles from "./Pictogram.module.css";
 
 function Pictogram(props) {
-  const { className, label, labelPosition, src } = props;
+  const { className, label, labelPosition, src, ...other } = props;
 
   const pictogramClassName = clsx(styles.root, className, {
-    [styles.isColumnReverse]: labelPosition === "top"
+    [styles.isColumnReverse]: labelPosition === "top",
   });
 
   return (
-    <div className={pictogramClassName}>
+    <div className={pictogramClassName} {...other}>
       <div className={styles.imgContainer}>
         {src && <img className={styles.img} src={src} alt="" />}
       </div>
@@ -36,11 +36,11 @@ Pictogram.propTypes = {
   /**
    * Image source.
    */
-  src: PropTypes.string
+  src: PropTypes.string,
 };
 
 Pictogram.defaultProps = {
-  labelPosition: "bottom"
+  labelPosition: "bottom",
 };
 
 export default Pictogram;
