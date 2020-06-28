@@ -6,5 +6,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.root:empty {
   background: rgba(128, 128, 128, 0.1);
 }
