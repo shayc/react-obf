@@ -46,11 +46,18 @@ function useBoardSet(boardSet = initialBoardSet) {
     return set;
   }
 
+  function getButtonColors() {
+    const colors = OBF.getButtonColors(boardSet);
+
+    return colors;
+  }
+
   return {
     clearBoardSet,
     getBoardById,
     getBoardByPath,
     getBoards,
+    getButtonColors,
     getRootBoard,
     setBoardSet,
   };

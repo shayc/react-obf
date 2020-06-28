@@ -24,6 +24,7 @@ function useBoard(boardSet = initialBoardSet, deps = initialDeps) {
     getBoardById,
     getBoardByPath,
     getBoards,
+    getButtonColors,
     getRootBoard,
     setBoardSet,
   } = useBoardSet(boardSet);
