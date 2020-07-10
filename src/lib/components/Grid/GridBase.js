@@ -35,6 +35,8 @@ function GridBase(props) {
             return (
               <DroppableCell
                 key={cellIndex}
+                column={cellIndex}
+                row={rowIndex}
                 accept={"item"}
                 onDrop={onItemDrop}
               >

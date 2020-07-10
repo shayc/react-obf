@@ -6,11 +6,14 @@ import { useDrop } from "react-dnd";
 import styles from "./DroppableCell.module.css";
 
 function DroppableCell(props) {
-  const { accept, className, onDrop, ...other } = props;
+  const { accept, className, column, onDrop, row, ...other } = props;
 
   const [{ isOver, canDrop }, drop] = useDrop({
     accept,
-    drop: onDrop,
+    drop: (item) => {
+      const cell = { column, row };
+      onDrop(item, cell);
+    },
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
