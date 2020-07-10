@@ -8,7 +8,14 @@ import AbsolutePosition from "../AbsolutePosition";
 import styles from "./Board.module.css";
 
 function Board(props) {
-  const { buttons, className, grid, renderButton, renderEmptyCell } = props;
+  const {
+    buttons,
+    className,
+    grid,
+    onButtonDrop,
+    renderButton,
+    renderEmptyCell,
+  } = props;
 
   const boardClassName = clsx(styles.root, className);
 
@@ -25,6 +32,7 @@ function Board(props) {
         <Grid
           columns={grid.columns}
           items={buttons}
+          onItemDrop={onButtonDrop}
           order={grid.order}
           renderItem={renderButton}
           renderEmptyCell={renderEmptyCell}

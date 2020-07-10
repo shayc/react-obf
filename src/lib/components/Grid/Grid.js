@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { DndProvider } from "react-dnd";
 
 import GridBase from "./GridBase";
 import styles from "./Grid.module.css";
@@ -24,20 +26,22 @@ function Grid(props) {
   const gridClassName = clsx(styles.grid, className);
 
   return (
-    <div className={styles.root}>
-      {Boolean(pages.length > 1) ? (
-        pages.map((pageItems, i) => (
-          <GridBase
-            {...props}
-            className={gridClassName}
-            items={pageItems}
-            key={i}
-          />
-        ))
-      ) : (
-        <GridBase {...props} />
-      )}
-    </div>
+    <DndProvider backend={HTML5Backend}>
+      <div className={styles.root}>
+        {Boolean(pages.length > 1) ? (
+          pages.map((pageItems, i) => (
+            <GridBase
+              {...props}
+              className={gridClassName}
+              items={pageItems}
+              key={i}
+            />
+          ))
+        ) : (
+          <GridBase {...props} />
+        )}
+      </div>
+    </DndProvider>
   );
 }
 
@@ -57,6 +61,7 @@ Grid.propTypes = {
       id: PropTypes.string.isRequired,
     })
   ),
+  onItemDrop: PropTypes.func.isRequired,
   /**
    * Items order by ID.
    */

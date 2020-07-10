@@ -4,7 +4,8 @@ import clsx from "clsx";
 import * as OBF from "@shayc/obf-utils";
 
 import Row from "./Row/Row";
-import Cell from "./Cell/Cell";
+import DroppableCell from "./DroppableCell/DroppableCell";
+import DraggableItem from "./DraggableItem/DraggableItem";
 import styles from "./GridBase.module.css";
 
 function GridBase(props) {
@@ -12,6 +13,7 @@ function GridBase(props) {
     className,
     columns,
     items,
+    onItemDrop,
     order,
     renderEmptyCell,
     renderItem,
@@ -31,11 +33,19 @@ function GridBase(props) {
         <Row key={rowIndex}>
           {row.map((item, cellIndex) => {
             return (
-              <Cell key={cellIndex}>
-                {item
-                  ? renderItem(item, itemIndex++)
-                  : renderEmptyCell && renderEmptyCell()}
-              </Cell>
+              <DroppableCell
+                key={cellIndex}
+                accept={"item"}
+                onDrop={onItemDrop}
+              >
+                {item ? (
+                  <DraggableItem type={"item"} id={item.id}>
+                    {renderItem(item, itemIndex++)}
+                  </DraggableItem>
+                ) : (
+                  renderEmptyCell && renderEmptyCell()
+                )}
+              </DroppableCell>
             );
           })}
         </Row>
