@@ -41,9 +41,11 @@ function useBoard(boardSet = initialBoardSet, deps = initialDeps) {
 
   const rootBoardId = getRootBoard()?.id;
   const nav = useNavigation([rootBoardId], 0);
-  const board = nav.currentHistory ? getBoardById(nav.currentHistory) : {};
-  const grid = useGrid(board?.grid || {});
+  const board = getBoardById(nav.currentHistory);
+  const denormalizedBoard = board ? OBF.denormalizeBoard(board, boardSet) : {};
+  const grid = useGrid(denormalizedBoard.grid || {});
   const output = useOutput();
+
   async function openFiles(files) {
     clearSet();
 
@@ -60,7 +62,13 @@ function useBoard(boardSet = initialBoardSet, deps = initialDeps) {
 
   function loadSet(boardSet) {
     setBoardSet(boardSet);
-    nav.set([getRootBoard()?.id]);
+
+    const rootBoard = getRootBoard();
+
+    grid.setColumns(rootBoard?.grid?.columns);
+    grid.setRows(rootBoard?.grid?.rows);
+    grid.setOrder(rootBoard?.grid?.order);
+    nav.set([rootBoard?.id]);
   }
 
   function loadBoard(loadBoard) {
@@ -165,7 +173,7 @@ function useBoard(boardSet = initialBoardSet, deps = initialDeps) {
   }
 
   return {
-    board,
+    board: denormalizedBoard,
     boardList,
     grid,
     handleButtonClick,

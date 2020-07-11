@@ -5,7 +5,7 @@ import * as OBF from "@shayc/obf-utils";
 const initialBoardSet = { manifest: { paths: { boards: {} } }, boards: {} };
 
 function useBoardSet(boardSet = initialBoardSet) {
-  const ref = useRef(OBF.denormalizeBoardSet(boardSet));
+  const ref = useRef(boardSet);
 
   function getBoardById(id) {
     const board = OBF.getBoardById(id, ref.current);
@@ -36,14 +36,7 @@ function useBoardSet(boardSet = initialBoardSet) {
   }
 
   function setBoardSet(boardSet) {
-    const set = denormalizeBoardSet(boardSet);
-    ref.current = set;
-  }
-
-  function denormalizeBoardSet(boardSet) {
-    const set = OBF.denormalizeBoardSet(boardSet);
-
-    return set;
+    ref.current = boardSet;
   }
 
   function getBoardSetColors() {
