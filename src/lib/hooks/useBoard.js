@@ -128,7 +128,7 @@ function useBoard(boardSet = initialBoardSet, deps = initialDeps) {
 
   function speakOutput() {
     const text = output.values.reduce(
-      (acc, value) => `${acc} ${value.vocalization || value.label}`,
+      (acc, value) => `${acc} ${OBF.getTextToSpeak(value)}`,
       ""
     );
 
